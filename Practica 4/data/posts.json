@@ -1,0 +1,12 @@
+[
+    {
+        "slug": "primer-post",
+        "title": "Mi Primer Post",
+        "content": "\u00a1Esta es mi primera publicaci\u00f3n de blog con Flight PHP!"
+    },
+    {
+        "slug": "1daw",
+        "title": "1DAW",
+        "content": "No estoy en 1DAW"
+    }
+]
