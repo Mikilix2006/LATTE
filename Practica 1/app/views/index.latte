@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MotorSport JSON Manager</title>
+    <style>
+        body { font-family: Arial; margin: 2em; }
+        .nav { margin-bottom: 20px; background: #f4f4f4; padding: 10px; }
+        .cat-block { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <strong>Bienvenido: {$usuario}</strong> | 
+        <a href="/dashboard">Dashboard</a> | 
+        <a href="/logout" style="color:red">Cerrar Sesión</a>
+    </nav>
+    <div class="nav">
+        Usuario: <strong>{$usuario}</strong> | <a href="/dashboard">Dashboard (Insertar)</a>
+    </div>
+
+    <h1>Búsqueda en Mundial</h1>
+    <form action="/" method="get">
+        <input type="text" name="q" placeholder="Buscar categoría, equipo o piloto..." value="{$busqueda}">
+        <button type="submit">Filtrar</button>
+        <a href="/" n:if="$busqueda">Limpiar filtro</a>
+    </form>
+
+    <hr>
+
+    <div n:foreach="$datos as $cat => $equipos" class="cat-block">
+        <h2>{$cat}</h2>
+        <div n:foreach="$equipos as $equipo => $pilotos" style="margin-left: 20px;">
+            <strong>{$equipo}:</strong>
+            <ul>
+                <li n:foreach="$pilotos as $p">{$p}</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

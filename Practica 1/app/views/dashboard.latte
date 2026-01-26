@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - {$usuario}</title>
+    <style>.error { color: red; font-weight: bold; }</style>
+</head>
+<body>
+    <h1>Panel de Control</h1>
+    <p>Bienvenido, <strong>{$usuario}</strong>.</p>
+    
+    <div n:if="!empty($errores)" class="error">
+        <p>Corrige los siguientes errores:</p>
+        <ul>
+            <li n:foreach="$errores as $e">{$e}</li>
+        </ul>
+    </div>
+
+    <form action="/insertar" method="post">
+        <h3>Insertar nuevo objeto</h3>
+        <label>Categoría:</label><br>
+        <select name="categoria">
+            <option value="MotoGP">MotoGP</option>
+            <option value="Moto2">Moto2</option>
+            <option value="Moto3">Moto3</option>
+        </select><br><br>
+
+        <label>Equipo:</label><br>
+        <input type="text" name="equipo" placeholder="Ej: Pramac Racing"><br><br>
+
+        <label>Piloto y País:</label><br>
+        <input type="text" name="piloto" placeholder="Ej: Pecco Bagnaia, Italia"><br><br>
+
+        <button type="submit">Guardar en JSON</button>
+    </form>
+
+    <p><a href="/">← Volver a la página principal</a></p>
+</body>
+</html>

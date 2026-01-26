@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Práctica 1</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 100px; }
+        .login-card { border: 1px solid #ccc; padding: 20px; border-radius: 8px; box-shadow: 2px 2px 10px #eee; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>Iniciar Sesión</h2>
+        <p n:if="$error" class="error">{$error}</p>
+        <form action="/auth" method="post">
+            <p>
+                <label>Usuario</label><br>
+                <input type="text" name="user" required>
+            </p>
+            <p>
+                <label>Contraseña</label><br>
+                <input type="password" name="pass" required>
+            </p>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>

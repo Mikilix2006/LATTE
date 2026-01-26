@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '8d9d67ffc3687f21a382a6ce327c03479cd1b90f',
+        'reference' => '93d0e76a2e1c58ca124e0592091d33e7549a3651',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '8d9d67ffc3687f21a382a6ce327c03479cd1b90f',
+            'reference' => '93d0e76a2e1c58ca124e0592091d33e7549a3651',
             'dev_requirement' => false,
         ),
         'flightphp/core' => array(

@@ -1,0 +1,44 @@
+{
+  "MotoGP": {
+    "Ducati Lenovo": [
+      "Francesco Bagnaia, Italia",
+      "Marc Marquez, España"
+    ],
+    "Yamaha": [
+      "Fabio Quartararo, Francia",
+      "Álex Rins, España"
+    ],
+    "Honda": [
+      "Luca Marini, Italia",
+      "Joan Mir, España"
+    ]
+  },
+  "Moto2": {
+    "MT Helmets": [
+      "Iván Ortolá, España",
+      "Sergio García Dols, España"
+    ],
+    "Pramac Racing": [
+      "Tony Arbolino, Italia",
+      "Izan Guevara, España"
+    ],
+    "Fantic Racing": [
+      "Aron Canet, España",
+      "Barry Baults, Bélgica"
+    ]
+  },
+  "Moto3": {
+    "Honda": [
+      "Tatchakorn Buasri, Tailandia",
+      "Taiyo Furusato, Japón"
+    ],
+    "Ángel Nieto Team": [
+      "Máximo Quiles, España",
+      "Dennis Foggia, Italia"
+    ],
+    "MT Helmets": [
+      "Ryusei Yamanaka, Japón",
+      "Ángel Piqueras, España"
+    ]
+  }
+}
