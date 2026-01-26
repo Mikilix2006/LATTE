@@ -1,41 +1,99 @@
 <?php
-Flight::route('/', function () {
-   $posts = Flight::posts();
-   Flight::view()->render('home.latte', [
-       'title' => 'Mi Blog',
-       'posts' => $posts
-   ]);
+
+// --- MIDDLEWARE: Control de Acceso ---
+Flight::before('start', function(&$params, &$output) {
+    $url = Flight::request()->url;
+    // Si no hay sesión y no va al login/auth, redirigir
+    if (!isset($_SESSION['usuario_id']) && $url !== '/login' && $url !== '/auth') {
+        Flight::redirect('/login');
+        exit;
+    }
 });
 
-Flight::route('/post/@slug', function ($slug) {
-   $posts = Flight::posts();
-   $post = array_filter($posts, fn($p) => $p['slug'] === $slug);
-   $post = reset($post) ?: null;
-   if (!$post) {
-       Flight::notFound();
-       return;
-   }
-   Flight::view()->render('post.latte', [
-       'title' => $post['title'],
-       'post' => $post
-   ]);
+// --- RUTA: LOGIN ---
+Flight::route('/login', function() use ($latte) {
+    if (isset($_SESSION['usuario_id'])) Flight::redirect('/');
+    
+    $latte->render(__DIR__ . '/../app/views/login.latte', [
+        'error' => $_SESSION['error_login'] ?? null
+    ]);
+    unset($_SESSION['error_login']);
 });
 
-Flight::route('GET /create', function () {
-   Flight::view()->render('create.latte', ['title' => 'Crear una Publicación']);
-});
+// --- RUTA: PROCESAR AUTH ---
+Flight::route('POST /auth', function() {
+    $user = $_POST['user'] ?? '';
+    $pass = $_POST['pass'] ?? '';
 
-Flight::route('POST /create', function () {
-   $request = Flight::request();
-   $title = $request->data['title'];
-   $content = $request->data['content'];
-   $slug = strtolower(str_replace(' ', '-', $title));
-
-   $posts = Flight::posts();
-   $posts[] = ['slug' => $slug, 'title' => $title, 'content' => $content];
-   file_put_contents(__DIR__ . '/../../data/posts.json', json_encode($posts, JSON_PRETTY_PRINT));
-
+   $_SESSION['usuario_id'] = $user;
    Flight::redirect('/');
+});
+
+// --- RUTA: LOGOUT ---
+Flight::route('/logout', function() {
+    session_destroy();
+    Flight::redirect('/login');
+});
+
+// --- RUTA: PRINCIPAL (Búsqueda) ---
+Flight::route('/', function() use ($latte) {
+    $datos = leerDatosMundial();
+    $busqueda = Flight::request()->query->q;
+    $resultados = $datos;
+
+    if ($busqueda) {
+        $q = strtolower($busqueda);
+        $resultados = [];
+        foreach ($datos as $cat => $equipos) {
+            foreach ($equipos as $equipo => $pilotos) {
+                foreach ($pilotos as $piloto) {
+                    if (str_contains(strtolower($cat), $q) || 
+                        str_contains(strtolower($equipo), $q) || 
+                        str_contains(strtolower($piloto), $q)) {
+                        $resultados[$cat][$equipo][] = $piloto;
+                    }
+                }
+            }
+        }
+    }
+
+    $latte->render(__DIR__ . '/../views/index.latte', [
+        'usuario' => $_SESSION['usuario_id'],
+        'datos' => $resultados,
+        'busqueda' => $busqueda
+    ]);
+});
+
+// --- RUTA: DASHBOARD (Inserción) ---
+Flight::route('/dashboard', function() use ($latte) {
+    $latte->render(__DIR__ . '/../views/dashboard.latte', [
+        'usuario' => $_SESSION['usuario_id'],
+        'errores' => $_SESSION['errores_form'] ?? []
+    ]);
+    unset($_SESSION['errores_form']);
+});
+
+// --- RUTA: ACCIÓN INSERTAR ---
+Flight::route('POST /insertar', function() {
+    $datos = leerDatosMundial();
+    $cat = $_POST['categoria'] ?? '';
+    $equipo = $_POST['equipo'] ?? '';
+    $piloto = $_POST['piloto'] ?? '';
+    $errores = [];
+
+    // Validaciones
+    if (!$cat || !$equipo || !$piloto) $errores[] = "Todos los campos son obligatorios.";
+    if (preg_match('/[0-9]/', $piloto)) $errores[] = "El nombre del piloto no puede contener números.";
+    if (strlen($piloto) < 5) $errores[] = "Nombre demasiado corto (mín. 5 caracteres).";
+
+    if (empty($errores)) {
+        $datos[$cat][$equipo][] = $piloto;
+        file_put_contents(__DIR__ . '/../../data/motociclismo.json', json_encode($datos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        Flight::redirect('/');
+    } else {
+        $_SESSION['errores_form'] = $errores;
+        Flight::redirect('/dashboard');
+    }
 });
 
 ?>
