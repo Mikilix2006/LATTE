@@ -21,23 +21,22 @@ final class Template_49cd743277 extends Latte\Runtime\Template
     <title>Dashboard - ';
 		echo LR\Filters::escapeHtmlText($usuario) /* line 4 */;
 		echo '</title>
-    <style>.error { color: red; font-weight: bold; }</style>
 </head>
 <body>
     <h1>Panel de Control</h1>
     <p>Bienvenido, <strong>';
-		echo LR\Filters::escapeHtmlText($usuario) /* line 9 */;
+		echo LR\Filters::escapeHtmlText($usuario) /* line 8 */;
 		echo '</strong>.</p>
     
 ';
-		if (!empty($errores)) /* line 11 */ {
-			echo '    <div class="error">
+		if (!empty($errores)) /* line 10 */ {
+			echo '    <div>
         <p>Corrige los siguientes errores:</p>
         <ul>
 ';
-			foreach ($errores as $e) /* line 14 */ {
+			foreach ($errores as $e) /* line 13 */ {
 				echo '            <li>';
-				echo LR\Filters::escapeHtmlText($e) /* line 14 */;
+				echo LR\Filters::escapeHtmlText($e) /* line 13 */;
 				echo '</li>
 ';
 
@@ -58,15 +57,19 @@ final class Template_49cd743277 extends Latte\Runtime\Template
         </select><br><br>
 
         <label>Equipo:</label><br>
-        <input type="text" name="equipo" placeholder="Ej: Pramac Racing"><br><br>
+        <input type="text" name="equipo" placeholder="Ej: Pramac Racing" value="';
+		echo LR\Filters::escapeHtmlAttr($equipo ?? '') /* line 27 */;
+		echo '"><br><br>
 
         <label>Piloto y País:</label><br>
-        <input type="text" name="piloto" placeholder="Ej: Pecco Bagnaia, Italia"><br><br>
+        <input type="text" name="piloto" placeholder="Ej: Pecco Bagnaia, Italia" value="';
+		echo LR\Filters::escapeHtmlAttr($piloto ?? '') /* line 30 */;
+		echo '"><br><br>
 
         <button type="submit">Guardar en JSON</button>
     </form>
 
-    <p><a href="/">← Volver a la página principal</a></p>
+    <p><a href="/">Volver</a></p>
 </body>
 </html>';
 	}
@@ -77,7 +80,7 @@ final class Template_49cd743277 extends Latte\Runtime\Template
 		extract($this->params);
 
 		if (!$this->getReferringTemplate() || $this->getReferenceType() === 'extends') {
-			foreach (array_intersect_key(['e' => '14'], $this->params) as $ʟ_v => $ʟ_l) {
+			foreach (array_intersect_key(['e' => '13'], $this->params) as $ʟ_v => $ʟ_l) {
 				trigger_error("Variable \$$ʟ_v overwritten in foreach on line $ʟ_l");
 			}
 		}

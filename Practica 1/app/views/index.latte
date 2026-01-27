@@ -2,20 +2,15 @@
 <html>
 <head>
     <title>MotorSport JSON Manager</title>
-    <style>
-        body { font-family: Arial; margin: 2em; }
-        .nav { margin-bottom: 20px; background: #f4f4f4; padding: 10px; }
-        .cat-block { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
-    </style>
 </head>
 <body>
     <nav>
         <strong>Bienvenido: {$usuario}</strong> | 
         <a href="/dashboard">Dashboard</a> | 
-        <a href="/logout" style="color:red">Cerrar Sesión</a>
+        <a href="/logout">Cerrar Sesión</a>
     </nav>
-    <div class="nav">
-        Usuario: <strong>{$usuario}</strong> | <a href="/dashboard">Dashboard (Insertar)</a>
+    <div>
+        Usuario: <strong>{$usuario}</strong>
     </div>
 
     <h1>Búsqueda en Mundial</h1>
@@ -27,9 +22,9 @@
 
     <hr>
 
-    <div n:foreach="$datos as $cat => $equipos" class="cat-block">
+    <div n:foreach="$datos as $cat => $equipos">
         <h2>{$cat}</h2>
-        <div n:foreach="$equipos as $equipo => $pilotos" style="margin-left: 20px;">
+        <div n:foreach="$equipos as $equipo => $pilotos">
             <strong>{$equipo}:</strong>
             <ul>
                 <li n:foreach="$pilotos as $p">{$p}</li>

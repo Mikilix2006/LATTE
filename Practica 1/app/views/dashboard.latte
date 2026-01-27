@@ -2,13 +2,12 @@
 <html>
 <head>
     <title>Dashboard - {$usuario}</title>
-    <style>.error { color: red; font-weight: bold; }</style>
 </head>
 <body>
     <h1>Panel de Control</h1>
     <p>Bienvenido, <strong>{$usuario}</strong>.</p>
     
-    <div n:if="!empty($errores)" class="error">
+    <div n:if="!empty($errores)">
         <p>Corrige los siguientes errores:</p>
         <ul>
             <li n:foreach="$errores as $e">{$e}</li>
@@ -25,14 +24,14 @@
         </select><br><br>
 
         <label>Equipo:</label><br>
-        <input type="text" name="equipo" placeholder="Ej: Pramac Racing"><br><br>
+        <input type="text" name="equipo" placeholder="Ej: Pramac Racing" value="{$equipo ?? ''}"><br><br>
 
         <label>Piloto y País:</label><br>
-        <input type="text" name="piloto" placeholder="Ej: Pecco Bagnaia, Italia"><br><br>
+        <input type="text" name="piloto" placeholder="Ej: Pecco Bagnaia, Italia" value="{$piloto ?? ''}"><br><br>
 
         <button type="submit">Guardar en JSON</button>
     </form>
 
-    <p><a href="/">← Volver a la página principal</a></p>
+    <p><a href="/">Volver</a></p>
 </body>
 </html>

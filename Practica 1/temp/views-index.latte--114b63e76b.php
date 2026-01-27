@@ -19,34 +19,29 @@ final class Template_114b63e76b extends Latte\Runtime\Template
 <html>
 <head>
     <title>MotorSport JSON Manager</title>
-    <style>
-        body { font-family: Arial; margin: 2em; }
-        .nav { margin-bottom: 20px; background: #f4f4f4; padding: 10px; }
-        .cat-block { border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; }
-    </style>
 </head>
 <body>
     <nav>
         <strong>Bienvenido: ';
-		echo LR\Filters::escapeHtmlText($usuario) /* line 13 */;
+		echo LR\Filters::escapeHtmlText($usuario) /* line 8 */;
 		echo '</strong> | 
         <a href="/dashboard">Dashboard</a> | 
-        <a href="/logout" style="color:red">Cerrar Sesión</a>
+        <a href="/logout">Cerrar Sesión</a>
     </nav>
-    <div class="nav">
+    <div>
         Usuario: <strong>';
-		echo LR\Filters::escapeHtmlText($usuario) /* line 18 */;
-		echo '</strong> | <a href="/dashboard">Dashboard (Insertar)</a>
+		echo LR\Filters::escapeHtmlText($usuario) /* line 13 */;
+		echo '</strong>
     </div>
 
     <h1>Búsqueda en Mundial</h1>
     <form action="/" method="get">
         <input type="text" name="q" placeholder="Buscar categoría, equipo o piloto..." value="';
-		echo LR\Filters::escapeHtmlAttr($busqueda) /* line 23 */;
+		echo LR\Filters::escapeHtmlAttr($busqueda) /* line 18 */;
 		echo '">
         <button type="submit">Filtrar</button>
 ';
-		if ($busqueda) /* line 25 */ {
+		if ($busqueda) /* line 20 */ {
 			echo '        <a href="/">Limpiar filtro</a>
 ';
 		}
@@ -55,22 +50,22 @@ final class Template_114b63e76b extends Latte\Runtime\Template
     <hr>
 
 ';
-		foreach ($datos as $cat => $equipos) /* line 30 */ {
-			echo '    <div class="cat-block">
+		foreach ($datos as $cat => $equipos) /* line 25 */ {
+			echo '    <div>
         <h2>';
-			echo LR\Filters::escapeHtmlText($cat) /* line 31 */;
+			echo LR\Filters::escapeHtmlText($cat) /* line 26 */;
 			echo '</h2>
 ';
-			foreach ($equipos as $equipo => $pilotos) /* line 32 */ {
-				echo '        <div style="margin-left: 20px;">
+			foreach ($equipos as $equipo => $pilotos) /* line 27 */ {
+				echo '        <div>
             <strong>';
-				echo LR\Filters::escapeHtmlText($equipo) /* line 33 */;
+				echo LR\Filters::escapeHtmlText($equipo) /* line 28 */;
 				echo ':</strong>
             <ul>
 ';
-				foreach ($pilotos as $p) /* line 35 */ {
+				foreach ($pilotos as $p) /* line 30 */ {
 					echo '                <li>';
-					echo LR\Filters::escapeHtmlText($p) /* line 35 */;
+					echo LR\Filters::escapeHtmlText($p) /* line 30 */;
 					echo '</li>
 ';
 
@@ -97,7 +92,7 @@ final class Template_114b63e76b extends Latte\Runtime\Template
 		extract($this->params);
 
 		if (!$this->getReferringTemplate() || $this->getReferenceType() === 'extends') {
-			foreach (array_intersect_key(['cat' => '30', 'equipos' => '30', 'equipo' => '32', 'pilotos' => '32', 'p' => '35'], $this->params) as $ʟ_v => $ʟ_l) {
+			foreach (array_intersect_key(['cat' => '25', 'equipos' => '25', 'equipo' => '27', 'pilotos' => '27', 'p' => '30'], $this->params) as $ʟ_v => $ʟ_l) {
 				trigger_error("Variable \$$ʟ_v overwritten in foreach on line $ʟ_l");
 			}
 		}
