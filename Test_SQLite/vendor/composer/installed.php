@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f4b0551f9be7d09b374c071a1348970fb61b3a86',
+        'reference' => 'de18b0f819a1342f84afaf1cdbca34be4a57cb3e',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f4b0551f9be7d09b374c071a1348970fb61b3a86',
+            'reference' => 'de18b0f819a1342f84afaf1cdbca34be4a57cb3e',
             'dev_requirement' => false,
         ),
         'flightphp/core' => array(
@@ -33,6 +33,15 @@
             'replaced' => array(
                 0 => '2.0.2',
             ),
+        ),
+        'php-ai/php-ml' => array(
+            'pretty_version' => '0.10.0',
+            'version' => '0.10.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-ai/php-ml',
+            'aliases' => array(),
+            'reference' => '543f11158c57bf64ef8ddecd5bab51d396d39f50',
+            'dev_requirement' => false,
         ),
     ),
 );

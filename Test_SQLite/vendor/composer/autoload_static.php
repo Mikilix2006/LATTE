@@ -10,6 +10,20 @@ class ComposerStaticInita18e480f471e91bfb745f75ecf2aeab4
         '4cdafd4a5191caf078235e7dd119fdaf' => __DIR__ . '/..' . '/flightphp/core/flight/autoload.php',
     );
 
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Phpml\\' => 6,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Phpml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-ai/php-ml/src',
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
@@ -17,6 +31,8 @@ class ComposerStaticInita18e480f471e91bfb745f75ecf2aeab4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInita18e480f471e91bfb745f75ecf2aeab4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita18e480f471e91bfb745f75ecf2aeab4::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInita18e480f471e91bfb745f75ecf2aeab4::$classMap;
 
         }, null, ClassLoader::class);

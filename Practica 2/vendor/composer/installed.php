@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'v1.3.0',
-        'version' => '1.3.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => 'de18b0f819a1342f84afaf1cdbca34be4a57cb3e',
         'name' => 'flightphp/skeleton',
         'dev' => true,
     ),
@@ -38,12 +38,12 @@
             'dev_requirement' => false,
         ),
         'flightphp/skeleton' => array(
-            'pretty_version' => 'v1.3.0',
-            'version' => '1.3.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => 'de18b0f819a1342f84afaf1cdbca34be4a57cb3e',
             'dev_requirement' => false,
         ),
         'flightphp/tracy-extensions' => array(
@@ -77,6 +77,15 @@
             'install_path' => __DIR__ . '/../nette/utils',
             'aliases' => array(),
             'reference' => '2778deb6aab136c8db4ed1f4d6e9f465ca2dbee3',
+            'dev_requirement' => false,
+        ),
+        'php-ai/php-ml' => array(
+            'pretty_version' => '0.10.0',
+            'version' => '0.10.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-ai/php-ml',
+            'aliases' => array(),
+            'reference' => '543f11158c57bf64ef8ddecd5bab51d396d39f50',
             'dev_requirement' => false,
         ),
         'tracy/tracy' => array(

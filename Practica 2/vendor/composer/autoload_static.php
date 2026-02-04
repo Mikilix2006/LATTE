@@ -17,6 +17,10 @@ class ComposerStaticInit3e4326f6389cc48e506c53dc50487853
         array (
             'flight\\' => 7,
         ),
+        'P' => 
+        array (
+            'Phpml\\' => 6,
+        ),
         'N' => 
         array (
             'Nette\\' => 6,
@@ -32,10 +36,14 @@ class ComposerStaticInit3e4326f6389cc48e506c53dc50487853
         array (
             0 => __DIR__ . '/..' . '/flightphp/runway/src',
         ),
+        'Phpml\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-ai/php-ml/src',
+        ),
         'Nette\\' => 
         array (
-            0 => __DIR__ . '/..' . '/nette/utils/src',
-            1 => __DIR__ . '/..' . '/nette/php-generator/src',
+            0 => __DIR__ . '/..' . '/nette/php-generator/src',
+            1 => __DIR__ . '/..' . '/nette/utils/src',
         ),
         'Ahc\\Cli\\' => 
         array (
